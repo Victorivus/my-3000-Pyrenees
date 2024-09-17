@@ -8,7 +8,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 peaks.forEach((peak, index) => {
   const marker = L.marker([peak.lat, peak.lng], {
     icon: L.icon({
-      iconUrl: peak.climbed ? 'green-marker-icon.png' : 'red-marker-icon.png',
+      iconUrl: peak.climbed ? 'img/green-marker-icon.png' : 'img/red-marker-icon.png',
       iconSize: [25, 41],
       iconAnchor: [12, 41],
     }),
@@ -54,7 +54,7 @@ function toggleAscent(index) {
     if (layer instanceof L.Marker) {
       layer.setIcon(
         L.icon({
-          iconUrl: peaks[index].climbed ? 'green-marker-icon.png' : 'red-marker-icon.png',
+          iconUrl: peaks[index].climbed ? 'img/green-marker-icon.png' : 'img/red-marker-icon.png',
           iconSize: [25, 41],
           iconAnchor: [12, 41],
         })
