@@ -1,12 +1,3 @@
-// Load the peaks from localStorage to sync with table
-const savedPeaks = JSON.parse(localStorage.getItem("peaks"));
-if (savedPeaks) {
-  savedPeaks.forEach((savedPeak, index) => {
-    peaks[index].climbed = savedPeak.climbed;
-    peaks[index].date = savedPeak.date;
-  });
-}
-
 // Initialize the map (assuming you're using Leaflet)
 const map = L.map('map').setView([42.7, 0.5], 9); // Centered in the Pyrenees
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -21,31 +12,44 @@ peaks.forEach((peak, index) => {
       iconSize: [25, 41],
       iconAnchor: [12, 41],
     }),
-}).addTo(map);
+  }).addTo(map);
 
-// Add a popup to log ascent from the map
-marker.bindPopup(`
-  <strong>${peak.name}</strong><br>
-  Height: ${peak.height}m<br>
-  Climbed: ${peak.climbed ? 'Yes' : 'No'}<br>
-  <input type="date" id="ascent-date-${index}" value="${peak.date || ''}">
-  <br>
-  <button onclick="logAscent(${index})">Log Ascent</button>
-`);
+  // Add a popup to log/unlog ascent from the map
+  marker.bindPopup(`
+    <strong>${peak.name}</strong><br>
+    Height: ${peak.height}m<br>
+    Climbed: ${peak.climbed ? 'Yes' : 'No'}<br>
+    <input type="date" id="ascent-date-${index}" value="${peak.date || ''}">
+    <br>
+    <button onclick="toggleAscent(${index})">
+      ${peak.climbed ? 'Unlog Ascent' : 'Log Ascent'}
+    </button>
+  `);
 });
 
-// Function to log ascent directly from map popup
-function logAscent(index) {
-const dateInput = document.querySelector(`#ascent-date-${index}`).value;
+// Function to toggle ascent directly from map popup
+function toggleAscent(index) {
+  const dateInput = document.querySelector(`#ascent-date-${index}`).value;
 
-if (dateInput) {
-  peaks[index].climbed = true;
-  peaks[index].date = dateInput;
+  if (peaks[index].climbed) {
+    // Unlog ascent
+    peaks[index].climbed = false;
+    peaks[index].date = null;
+  } else {
+    // Log ascent
+    if (dateInput) {
+      peaks[index].climbed = true;
+      peaks[index].date = dateInput;
+    } else {
+      alert("Please select a date.");
+      return;
+    }
+  }
 
   // Update localStorage
   localStorage.setItem("peaks", JSON.stringify(peaks));
 
-  // Refresh the marker icon to green
+  // Refresh the marker icon to green or red
   map.eachLayer((layer) => {
     if (layer instanceof L.Marker) {
       layer.setIcon(
@@ -57,7 +61,4 @@ if (dateInput) {
       );
     }
   });
-} else {
-  alert("Please select a date.");
-}
 }
