@@ -1,18 +1,33 @@
-// Initialize the map (assuming you're using Leaflet)
+// Initialize the map
 const map = L.map('map').setView([42.7, 0.5], 9); // Centered in the Pyrenees
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   maxZoom: 18,
 }).addTo(map);
 
+// Define paths to marker icons
+const greenIcon = L.icon({
+  iconUrl: 'img/green-marker-icon.png',
+  iconSize: [25, 25],
+  iconAnchor: [12, 25],
+});
+
+const redIcon = L.icon({
+  iconUrl: 'img/red-marker-icon.png',
+  iconSize: [25, 25],
+  iconAnchor: [12, 25],
+});
+
+// Store marker references
+const markers = {};
+
 // Add markers for each peak
 peaks.forEach((peak, index) => {
   const marker = L.marker([peak.lat, peak.lng], {
-    icon: L.icon({
-      iconUrl: peak.climbed ? 'img/green-marker-icon.png' : 'img/red-marker-icon.png',
-      iconSize: [25, 25],
-      iconAnchor: [12, 25],
-    }),
+    icon: peak.climbed ? greenIcon : redIcon,
   }).addTo(map);
+
+  // Store marker reference
+  markers[index] = marker;
 
   // Add a popup to log/unlog ascent from the map
   marker.bindPopup(`
@@ -35,11 +50,13 @@ function toggleAscent(index) {
     // Unlog ascent
     peaks[index].climbed = false;
     peaks[index].date = null;
+    markers[index].setIcon(redIcon); // Update only the selected marker
   } else {
     // Log ascent
     if (dateInput) {
       peaks[index].climbed = true;
       peaks[index].date = dateInput;
+      markers[index].setIcon(greenIcon); // Update only the selected marker
     } else {
       alert("Please select a date.");
       return;
@@ -48,17 +65,4 @@ function toggleAscent(index) {
 
   // Update localStorage
   localStorage.setItem("peaks", JSON.stringify(peaks));
-
-  // Refresh the marker icon to green or red
-  map.eachLayer((layer) => {
-    if (layer instanceof L.Marker) {
-      layer.setIcon(
-        L.icon({
-          iconUrl: peaks[index].climbed ? 'img/green-marker-icon.png' : 'img/red-marker-icon.png',
-          iconSize: [25, 41],
-          iconAnchor: [12, 41],
-        })
-      );
-    }
-  });
 }
