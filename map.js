@@ -9,8 +9,8 @@ peaks.forEach((peak, index) => {
   const marker = L.marker([peak.lat, peak.lng], {
     icon: L.icon({
       iconUrl: peak.climbed ? 'img/green-marker-icon.png' : 'img/red-marker-icon.png',
-      iconSize: [25, 41],
-      iconAnchor: [12, 41],
+      iconSize: [25, 25],
+      iconAnchor: [12, 25],
     }),
   }).addTo(map);
 
