@@ -12,10 +12,20 @@
     <a href="table.html" id="table-link">Table View</a>
   </nav>
 
+  <h1>Disclaimer Information and Instructions</h1>
+  <ul>
+    <!-- <li>- GPS Coordinates are taken from OpenStreetMap so the visualisation on the map matches.</li> -->
+    <li>Altitude/elevation is taken from OpenStreetMap and there are many errors (Work in progress)</li>
+    <li>We are putting in place visualisation of the peaks if they are from the first official UIAA list or modified later (Work in progress).</li>
+    <li>If you erase navigation data or use private navigation tools, the site won't be able to store your ascents.</li>
+    <li>You can export your data anytime using the "Download Data", it will save a json file in your computer.</li>
+    <li>Update a previously downloaded file with the "Import Downloaded Data" button".
+  </ul>
+
   <h1>Logged Ascents</h1>
 
   <button id="save-btn">Download Data</button>
-  <button id="import-btn">Import downloaded Data</button>
+  <button id="import-btn">Import Downloaded Data</button>
   <input type="file" id="import-file" accept=".json" hidden />
 
   <table id="peaks-table">
@@ -23,8 +33,9 @@
       <tr>
         <th>Peak Name</th>
         <th>Height (m)</th>
-        <th>Latitude</th>
-        <th>Longitude</th>
+        <th>Status List</th>
+        <!-- <th>Latitude</th>
+        <th>Longitude</th> -->
         <th>Climbed</th>
         <th>Ascent Date</th>
         <th>Log Ascent</th>

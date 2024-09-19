@@ -29,7 +29,7 @@ function loadTable() {
         // Create a table row for the zone header
         const zoneRow = document.createElement('tr');
         zoneRow.innerHTML = `
-            <td colspan="7" class="zone-header">${zone}</td>
+            <td colspan="6" class="zone-header">${zone}</td>
         `;
         zoneRow.classList.add('zone-row');  // Optional: Add class for styling
         tableBody.appendChild(zoneRow);
@@ -40,8 +40,11 @@ function loadTable() {
             row.innerHTML = `
                 <td>${peak.name}</td>
                 <td>${peak.elevation}</td>
-                <td>${peak.latitude}</td>
-                <td>${peak.longitude}</td>
+                <!-- <td>${peak.latitude}</td> -->
+                <!-- <td>${peak.longitude}</td> -->
+                <td>
+                    <span class="list-version">${peak.status}</span>
+                </td>
                 <td>
                     <span class="climbed-status">${peak.climbed ? 'Yes' : 'No'}</span>
                 </td>
