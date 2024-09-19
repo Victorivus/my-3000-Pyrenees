@@ -7,8 +7,8 @@ if (!peaks) {
     .then(data => {
         peaks = data;
         peaks.forEach((peak, index) => {
-            peak.climbed = 'No';
-            peak.date = '';
+            peak.climbed = false;
+            peak.date = null;
           });
         document.dispatchEvent(new Event('peaksLoaded'));
     })
