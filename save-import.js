@@ -31,6 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     const data = JSON.parse(event.target.result);
                     if (Array.isArray(data)) {
                         peaks = data;  // Update the global peaks variable
+                        // Save to localStorage
+                        localStorage.setItem("peaks", JSON.stringify(peaks));
                         document.dispatchEvent(new Event('peaksLoaded'));   // Reload the table with new data
                     } else {
                         alert('Invalid file format. The file must contain a JSON array.');
