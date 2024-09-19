@@ -16,8 +16,13 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.removeChild(a);
     });
 
-    // Function to import peaks data from a JSON file
+    // Show file input when import button is clicked
     importButton.addEventListener('click', () => {
+        importFileInput.click();  // Trigger file input dialog
+    });
+
+    // Handle file selection and import
+    importFileInput.addEventListener('change', () => {
         const file = importFileInput.files[0];
         if (file) {
             const reader = new FileReader();
