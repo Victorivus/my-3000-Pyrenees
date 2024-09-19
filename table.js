@@ -9,31 +9,56 @@ if (peaks) {
 }
 
 function loadTable() {
-    // Load the peaks into the table
-    peaks.forEach((peak, index) => {
-    const row = document.createElement("tr");
+    // Group peaks by 'zone'
+    const peaksByZone = peaks.reduce((acc, peak) => {
+        if (peak.zone !== 'Unknown') {
+            if (!acc[peak.zone]) {
+                acc[peak.zone] = [];
+            }
+            acc[peak.zone].push(peak);
+        }
+        return acc;
+    }, {});
 
-    row.innerHTML = `
-        <td>${peak.name}</td>
-        <td>${peak.elevation}</td>
-        <td>${peak.latitude}</td>
-        <td>${peak.longitude}</td>
-        <td>
-        <span class="climbed-status">${peak.climbed ? 'Yes' : 'No'}</span>
-        </td>
-        <td>
-        <input type="date" class="ascent-date" value="${peak.date || ''}">
-        </td>
-        <td>
-        <button class="toggle-ascent" data-index="${index}">
-            ${peak.climbed ? 'Unlog Ascent' : 'Log Ascent'}
-        </button>
-        </td>
-    `;
+    // Clear existing table body content
+    const tableBody = document.querySelector('#peaks-table tbody');
+    tableBody.innerHTML = ''; 
 
-    tableBody.appendChild(row);
-    });
+    // Iterate over each zone group
+    for (const [zone, peaks] of Object.entries(peaksByZone)) {
+        // Create a table row for the zone header
+        const zoneRow = document.createElement('tr');
+        zoneRow.innerHTML = `
+            <td colspan="7" class="zone-header">${zone}</td>
+        `;
+        zoneRow.classList.add('zone-row');  // Optional: Add class for styling
+        tableBody.appendChild(zoneRow);
+
+        // Iterate through each peak in the zone
+        peaks.forEach((peak, index) => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${peak.name}</td>
+                <td>${peak.elevation}</td>
+                <td>${peak.latitude}</td>
+                <td>${peak.longitude}</td>
+                <td>
+                    <span class="climbed-status">${peak.climbed ? 'Yes' : 'No'}</span>
+                </td>
+                <td>
+                    <input type="date" class="ascent-date" value="${peak.date || ''}">
+                </td>
+                <td>
+                    <button class="toggle-ascent" data-index="${index}">
+                        ${peak.climbed ? 'Unlog Ascent' : 'Log Ascent'}
+                    </button>
+                </td>
+            `;
+            tableBody.appendChild(row);
+        });
+    }
 }
+
 
 // Event listener to handle toggling the ascent
 tableBody.addEventListener("click", (event) => {
