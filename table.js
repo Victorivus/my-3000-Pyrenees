@@ -1,28 +1,30 @@
 const tableBody = document.querySelector("#peaks-table tbody");
 
-// Load the peaks into the table
-peaks.forEach((peak, index) => {
-  const row = document.createElement("tr");
+document.addEventListener('peaksLoaded', () => {
+    // Load the peaks into the table
+    peaks.forEach((peak, index) => {
+    const row = document.createElement("tr");
 
-  row.innerHTML = `
-    <td>${peak.name}</td>
-    <td>${peak.elevation}</td>
-    <td>${peak.latitude}</td>
-    <td>${peak.longitude}</td>
-    <td>
-      <span class="climbed-status">${peak.climbed ? 'Yes' : 'No'}</span>
-    </td>
-    <td>
-      <input type="date" class="ascent-date" value="${peak.date || ''}">
-    </td>
-    <td>
-      <button class="toggle-ascent" data-index="${index}">
-        ${peak.climbed ? 'Unlog Ascent' : 'Log Ascent'}
-      </button>
-    </td>
-  `;
+    row.innerHTML = `
+        <td>${peak.name}</td>
+        <td>${peak.elevation}</td>
+        <td>${peak.latitude}</td>
+        <td>${peak.longitude}</td>
+        <td>
+        <span class="climbed-status">${peak.climbed ? 'Yes' : 'No'}</span>
+        </td>
+        <td>
+        <input type="date" class="ascent-date" value="${peak.date || ''}">
+        </td>
+        <td>
+        <button class="toggle-ascent" data-index="${index}">
+            ${peak.climbed ? 'Unlog Ascent' : 'Log Ascent'}
+        </button>
+        </td>
+    `;
 
-  tableBody.appendChild(row);
+    tableBody.appendChild(row);
+    });
 });
 
 // Event listener to handle toggling the ascent

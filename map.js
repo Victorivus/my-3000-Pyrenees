@@ -20,26 +20,28 @@ const redIcon = L.icon({
 // Store marker references
 const markers = {};
 
-// Add markers for each peak
-peaks.forEach((peak, index) => {
-  const marker = L.marker([peak.latitude, peak.longitude], {
-    icon: peak.climbed ? greenIcon : redIcon,
-  }).addTo(map);
+document.addEventListener('peaksLoaded', () => {
+    // Add markers for each peak
+    peaks.forEach((peak, index) => {
+    const marker = L.marker([peak.latitude, peak.longitude], {
+        icon: peak.climbed ? greenIcon : redIcon,
+    }).addTo(map);
 
-  // Store marker reference
-  markers[index] = marker;
+    // Store marker reference
+    markers[index] = marker;
 
-  // Add a popup to log/unlog ascent from the map
-  marker.bindPopup(`
-    <strong>${peak.name}</strong><br>
-    Height: ${peak.elevation}m<br>
-    Climbed: ${peak.climbed ? 'Yes' : 'No'}<br>
-    <input type="date" id="ascent-date-${index}" value="${peak.date || ''}">
-    <br>
-    <button onclick="toggleAscent(${index})">
-      ${peak.climbed ? 'Unlog Ascent' : 'Log Ascent'}
-    </button>
-  `);
+    // Add a popup to log/unlog ascent from the map
+    marker.bindPopup(`
+        <strong>${peak.name}</strong><br>
+        Height: ${peak.elevation}m<br>
+        Climbed: ${peak.climbed ? 'Yes' : 'No'}<br>
+        <input type="date" id="ascent-date-${index}" value="${peak.date || ''}">
+        <br>
+        <button onclick="toggleAscent(${index})">
+        ${peak.climbed ? 'Unlog Ascent' : 'Log Ascent'}
+        </button>
+    `);
+    });
 });
 
 // Function to toggle ascent directly from map popup
