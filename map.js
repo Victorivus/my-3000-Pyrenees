@@ -19,8 +19,15 @@ const redIcon = L.icon({
 
 // Store marker references
 const markers = {};
-
 document.addEventListener('peaksLoaded', () => {
+    loadMarkers();
+});
+
+if (peaks) {
+    loadMarkers();  // Call the function immediately if peaks is already loaded
+}
+
+function loadMarkers() {
     // Add markers for each peak
     peaks.forEach((peak, index) => {
     const marker = L.marker([peak.latitude, peak.longitude], {
@@ -42,7 +49,7 @@ document.addEventListener('peaksLoaded', () => {
         </button>
     `);
     });
-});
+}
 
 // Function to toggle ascent directly from map popup
 function toggleAscent(index) {

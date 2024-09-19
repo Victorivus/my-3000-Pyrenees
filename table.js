@@ -1,6 +1,14 @@
 const tableBody = document.querySelector("#peaks-table tbody");
 
 document.addEventListener('peaksLoaded', () => {
+    loadTable();
+});
+
+if (peaks) {
+    loadTable();  // Call the function immediately if peaks is already loaded
+}
+
+function loadTable() {
     // Load the peaks into the table
     peaks.forEach((peak, index) => {
     const row = document.createElement("tr");
@@ -25,7 +33,7 @@ document.addEventListener('peaksLoaded', () => {
 
     tableBody.appendChild(row);
     });
-});
+}
 
 // Event listener to handle toggling the ascent
 tableBody.addEventListener("click", (event) => {
