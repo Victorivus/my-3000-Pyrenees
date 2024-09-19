@@ -35,6 +35,8 @@ button {
   cursor: pointer;
 }
 
+/*------------------ TABLE ------------------*/
+
 .zone-header {
   font-weight: bold;
   background-color: #229954;
@@ -67,4 +69,109 @@ button {
   text-align: left;
   background-color: #229954;
   color: white;
+}
+
+
+/*------------------ NAVIGATION BAR ------------------*/
+
+ul.horizontal {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+ul.horizontal li {
+  float: left;
+}
+
+ul.horizontal li a {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+ul.horizontal li a:hover:not(.active) {
+  background-color: #000;
+}
+
+ul.horizontal li a.active {
+  background-color:#229954;
+}
+
+.width94 {
+width:94%;
+}
+@media screen and (max-width: 600px) {
+  .width94 {
+     width:100%;
+  }
+}
+
+ul.gray {
+border: 1px solid #e7e7e7;
+  background-color: #f3f3f3;
+}
+
+ul.gray li a {
+  display: block;
+  color: #666;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+ul.gray li a:hover:not(.active) {
+  background-color: #ddd;
+}
+
+ul.gray li a.active {
+  color: white;
+  background-color: #229954;
+}
+.rightli {
+float:right;
+}
+
+@media screen and (max-width: 408px) {
+  .rightli {
+     display:none;
+  }
+}
+
+ul.ex {
+width:90%;
+}
+@media screen and (max-width: 600px) {
+  ul.ex {
+     width:100%;
+  }
+}
+
+ul.divider li {
+  float: left;
+  border-right:1px solid #bbb;
+}
+
+ul.divider li:last-child {
+  border-right: none;
+}
+ul.border {
+  border: 1px solid #555;
+}
+
+ul.border li a {
+  padding: 8px 16px;
+}
+
+ul.border li {
+  text-align: center;
+  border-bottom: 1px solid #555;
+}
+
+ul.border li:last-child {
+  border-bottom: none;
 }
