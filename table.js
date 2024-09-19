@@ -6,9 +6,9 @@ peaks.forEach((peak, index) => {
 
   row.innerHTML = `
     <td>${peak.name}</td>
-    <td>${peak.height}</td>
-    <td>${peak.lat}</td>
-    <td>${peak.lng}</td>
+    <td>${peak.elevation}</td>
+    <td>${peak.latitude}</td>
+    <td>${peak.longitude}</td>
     <td>
       <span class="climbed-status">${peak.climbed ? 'Yes' : 'No'}</span>
     </td>
