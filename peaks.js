@@ -6,6 +6,10 @@ if (!peaks) {
     .then(response => response.json())
     .then(data => {
         peaks = data;
+        peaks.forEach((peak, index) => {
+            peak.climbed = 'No';
+            peak.date = '';
+          });
         document.dispatchEvent(new Event('peaksLoaded'));
     })
     .catch(error => console.error('Error loading the file:', error));
