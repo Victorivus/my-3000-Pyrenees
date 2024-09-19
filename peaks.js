@@ -14,3 +14,4 @@ if (!peaks) {
     })
     .catch(error => console.error('Error loading the file:', error));
 }
+document.dispatchEvent(new Event('peaksLoaded'));
