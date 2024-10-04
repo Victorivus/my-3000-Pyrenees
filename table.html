@@ -24,8 +24,92 @@
     <li>Update a previously downloaded file with the "Import Downloaded Data" button".</li>
     <li>Data has been extracted from https://cazafantasmas3000es.blogspot.com, so we include the original list and the "new" list with removed and added peaks</li>
     <li>Main peaks are in bolt. Removed peaks from the original list following the original criteria are marked as so.</li>
+    <li>For details with problems with data integrity and data accuracy, please <a href="#popup" onclick="document.getElementById('data-problems-popup').style.display = 'block';">read this</a>.</li>
   </ul>
+  <div class="box"></div>
+  <div id="data-problems-popup" class="overlay">
+    <div class="popup" >
+      <h2>Problems with data integrity</h2>
+      <a class="close" href="#data-problems-popup">×</a>
+      <div class="content">
+          <p>Maps were obtained from OpenStreetMap in October 2024. We found the following inconsistency problems:</p>
+        
+        <h3>ZONE 5: NEOUVIELLE - PIC LONG</h3>
+        <ul><li>19. Punta Reboul-Vidal	3.007 m.  Does not existix on OpenStreetMaps</li></ul>
+        
+        <h3>ZONE 6: Coordenades de</h3>
+        <ul><li>062. Marcos Feliú Does not existix on OpenStreetMaps. There is a peak "Unamed" in 42.7087362, 0.3932349 (pirisport.com coordinates for Marcos Feliú are: 42.7106, 0.39392)</li>
+        <li>25. Pequeño Bachimala	3.061 m.	3.047,1 m.		3.061 m. has 2 possible correspondances on OpenStreetMaps:</li></ul>
+            <code>
+              <pre>
+              {
+                "id": "25",
+                "name": "Punta de l'Ibón Chico",
+                "alt": "Pequeño Bachimala",
+                "status": "Original-Tocandoelcielo",
+                "zone": "Batoua-Batchimale",
+                "latitude": 42.7097798,
+                "longitude": 0.3936125,
+                "elevation": 3051.0
+              },
+              {
+                "id": "25",
+                "name": "Bachimala Chicot S",
+                "alt": "Petit Bachimala, Punta del Ibón",
+                "status": "Original",
+                "zone": "Batoua-Batchimale",
+                "latitude": 42.7063983,
+                "longitude": 0.3935444,
+                "elevation": 3052.0
+              }
+              </pre>
+            </code>
 
+        <h3>ZONE 7: POSETS - ERISTE</h3>
+        <ul><li>068. Pico de Posets	3.375 m.	3.368,3 m. appears twice on OpenStreetMaps, we removed one.</li></ul>
+
+        <h3>ZONA 8: CLARABIDE - PERDIGUERO - BOUM</h3>
+          <ul><li>39. Cap Dera Baquo Occidental has two possible matches on OpenStreetMaps:
+          <code>
+            <pre>
+            {
+                "id": "39",
+                "name": "Tuca d'el Cabo de la Vaca O.",
+                "alt": "Cap Dera Baquo Occidental, Tuca del Cabo de la Vaca Oeste",
+                "status": "Original",
+                "zone": "Clarabide-Perdiguero-Boum",
+                "latitude": 42.6952671,
+                "longitude": 0.4915277,
+                "elevation": 3097.0
+            },
+            {
+                "id": "39",
+                "name": "Tuca d'el Cabo de la Vaca E.",
+                "alt": "Cap Dera Baquo Occidental, Tuca del Cabo de la Vaca Este",
+                "status": "Original",
+                "zone": "Clarabide-Perdiguero-Boum",
+                "latitude": 42.6945112,
+                "longitude": 0.4920976,
+                "elevation": 3097.0
+            }
+          </pre>
+        </code>
+
+        <h3>ZONA 9: MALADETA - ANETO</h3>
+            <p>We couldn't find any correspondance on OpenStreetMaps for the following peaks:</p>
+
+            <p>From the original list:</p>
+
+            <ul><li>76. 2º Resalte de Salenques	3.148 m.</li>
+            <li>79. Aguja Sur Russell	3.146 m.</li></ul>
+            
+            From the revised list:<br>
+            <ul><li>1078. Incisivo Oriental de Alba	3.087 m.				14,1 m.</li>
+            <li>1091. Antecima NE. de la Maladeta	3.235 m.	3.235 m.			11 m.</li>
+            <li>Aguja SO. del Pico Abadías	3.085 m.				22 m.</li></ul>
+          </div>
+    </div>
+  </div>
   <h1>Logged Ascents</h1>
 
   <button id="save-btn">Download Data</button>
