@@ -98,6 +98,10 @@
         "latitude": 42.6687455,
         "longitude": 1.4015231,
         "elevation": 3041.0,
+        "ele_buyse_gps": 3040.0,
+        "ele_sitar_icc": 3040.3,
+        "ele_ign": null,
+        "prominence": 10.3,
         "category": null
     },
     {
@@ -1924,6 +1928,10 @@
         "latitude": 42.6518198,
         "longitude": 0.4291557,
         "elevation": 3292.0,
+        "ele_buyse_gps": null,
+        "ele_sitar_icc": null,
+        "ele_ign": null,
+        "prominence": null,
         "category": null
     },
     {
