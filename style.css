@@ -71,7 +71,15 @@ button {
   color: white;
 }
 
+.main-peak tr {
+  font-weight: bold;
+}
 
+.removed-peak tr{
+  text-decoration: line-through;
+  opacity: 0.5;
+  background-color: #ffe6e6; /* Very light red background */
+}
 /*------------------ NAVIGATION BAR ------------------*/
 
 ul.horizontal {

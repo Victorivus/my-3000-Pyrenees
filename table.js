@@ -26,39 +26,48 @@ function loadTable() {
 
     // Iterate over each zone group
     for (const [zone, peaks] of Object.entries(peaksByZone)) {
-        // Create a table row for the zone header
-        const zoneRow = document.createElement('tr');
-        zoneRow.innerHTML = `
-            <td colspan="6" class="zone-header">${zone}</td>
-        `;
-        zoneRow.classList.add('zone-row');  // Optional: Add class for styling
-        tableBody.appendChild(zoneRow);
-
-        // Iterate through each peak in the zone
-        peaks.forEach((peak, index) => {
-            const row = document.createElement("tr");
-            row.innerHTML = `
-                <td>${peak.name}</td>
-                <td>${peak.elevation}</td>
-                <!-- <td>${peak.latitude}</td> -->
-                <!-- <td>${peak.longitude}</td> -->
-                <td>
-                    <span class="list-version">${peak.status}</span>
-                </td>
-                <td>
-                    <span class="climbed-status">${peak.climbed ? 'Yes' : 'No'}</span>
-                </td>
-                <td>
-                    <input type="date" class="ascent-date" value="${peak.date || ''}">
-                </td>
-                <td>
-                    <button class="toggle-ascent" data-index="${index}">
-                        ${peak.climbed ? 'Unlog Ascent' : 'Log Ascent'}
-                    </button>
-                </td>
-            `;
-            tableBody.appendChild(row);
-        });
+      // Create a table row for the zone header
+      const zoneRow = document.createElement('tr');
+      zoneRow.innerHTML = `
+          <td colspan="6" class="zone-header">${zone}</td>
+      `;
+      zoneRow.classList.add('zone-row');  // Optional: Add class for styling
+      tableBody.appendChild(zoneRow);
+  
+      // Iterate through each peak in the zone
+      peaks.forEach((peak, index) => {
+          const row = document.createElement("tr");
+          
+          // Add class 'main-peak' if category is 'main', and 'removed-peak' if status is 'Removed'
+          if (peak.category === "main") {
+              row.classList.add("main-peak");
+          }
+          if (peak.status === "Removed") {
+              row.classList.add("removed-peak");
+          }
+  
+          row.innerHTML = `
+              <td>${peak.name}</td>
+              <td>${peak.elevation}</td>
+              <!-- <td>${peak.latitude}</td> -->
+              <!-- <td>${peak.longitude}</td> -->
+              <td>
+                  <span class="list-version">${peak.status}</span>
+              </td>
+              <td>
+                  <span class="climbed-status">${peak.climbed ? 'Yes' : 'No'}</span>
+              </td>
+              <td>
+                  <input type="date" class="ascent-date" value="${peak.date || ''}">
+              </td>
+              <td>
+                  <button class="toggle-ascent" data-index="${index}">
+                      ${peak.climbed ? 'Unlog Ascent' : 'Log Ascent'}
+                  </button>
+              </td>
+          `;
+          tableBody.appendChild(row);
+      });
     }
 }
 
