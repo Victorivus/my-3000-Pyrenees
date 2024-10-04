@@ -63,7 +63,7 @@ button {
 
 #peaks-table tr:hover {background-color: #ddd;}
 
-#peaks-table th {
+#peaks-table th, .height-details th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: center;
@@ -79,6 +79,27 @@ button {
   text-decoration: line-through;
   opacity: 0.5;
   background-color: #ffe6e6; /* Very light red background */
+}
+.height-cell td {
+  position: relative;
+}
+.height-cell td:hover > .height-details {
+  display: block
+}
+.height-details {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 10;
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.height-details > td, .height-details > th {
+  border: 1px solid #ddd;
+  padding: 8px;
 }
 /*------------------ NAVIGATION BAR ------------------*/
 

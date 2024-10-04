@@ -48,7 +48,15 @@ function loadTable() {
   
           row.innerHTML = `
               <td>${peak.name}</td>
-              <td>${peak.elevation}</td>
+              <td class="height-cell">${peak.elevation}
+                  <table class="height-details">
+                      <tr><th>Source</th><th>Height</th></tr>
+                      ${peak.ele_buyse_gps ? `<tr><td>Original list / GPS</td><td>${peak.ele_buyse_gps}</td></tr>` : ''}
+                      ${peak.ele_sitar_icc ? `<tr><td>SITAR/ICC</td><td>${peak.ele_sitar_icc}</td></tr>` : ''}
+                      ${peak.ele_ign ? `<tr><td>IGN</td><td>${peak.ele_ign}</td></tr>` : ''}
+                      ${peak.prominence ? `<tr><td>Prominence</td><td>${peak.prominence}</td></tr>` : ''}
+                  </table>
+              </td>
               <!-- <td>${peak.latitude}</td> -->
               <!-- <td>${peak.longitude}</td> -->
               <td>
