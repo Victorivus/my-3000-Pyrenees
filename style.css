@@ -75,32 +75,54 @@ button {
   font-weight: bold;
 }
 
+/* Style for removed peak */
 .removed-peak td {
-  text-decoration: line-through;
-  opacity: 0.5;
-  background-color: #ffe6e6; /* Very light red background */
+    text-decoration: line-through; /* Strike-through text */
+    background-color: #ffe6e6; /* Very light red background */
+    position: relative; /* Create a positioning context for the pseudo-element */
 }
 
+.removed-peak td::after {
+    content: ''; /* Required to display the pseudo-element */
+    position: absolute; /* Position it over the cell */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 230, 230, 0.5); /* Very light red background with alpha for transparency */
+    z-index: 1; /* Ensure it is above the cell content */
+    pointer-events: none; /* Allow interaction with underlying elements */
+}
+
+/* Adjust height cell styles as necessary */
 .height-cell td {
-  position: relative;
+    position: relative; /* Ensure this is positioned correctly */
+}
+
+/* Ensure the height details are styled correctly */
+.height-details {
+   display: none; /* Hide it by default */
+   position: absolute; /* Position relative to the parent */
+   transform: translate(75px, -100px); /* Adjust for spacing */
+   z-index: 1000; /* Ensure it's above other content */
 }
 
 .height-cell:hover > .height-details {
-  display: block
+  display: block;
+  border: 1px solid #ddd;
 }
 
 .height-details {
-  display: none;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  z-index: 10;
-  width: 100%;
+    display: none; /* Hide it by default */
+    position: absolute; /* Position relative to the parent */
+    transform: translate(75px, -100px); /* Adjust for spacing */
+    z-index: 1000; /* Ensure it's above other content */
+    border-collapse: collapse; /* Prevents phantom borders */
+    width: auto; /* Make table width adjust based on content */
 }
 
 .height-details td, .height-details th {
   border: 1px solid #ddd;
-  padding: 8px;
 }
 
 .height-details tr:nth-child(odd){background-color: #fff;}
