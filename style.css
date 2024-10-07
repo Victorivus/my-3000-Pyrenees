@@ -99,14 +99,6 @@ button {
     position: relative; /* Ensure this is positioned correctly */
 }
 
-/* Ensure the height details are styled correctly */
-.height-details {
-   display: none; /* Hide it by default */
-   position: absolute; /* Position relative to the parent */
-   transform: translate(75px, -100px); /* Adjust for spacing */
-   z-index: 1000; /* Ensure it's above other content */
-}
-
 .height-cell:hover > .height-details {
   display: block;
   border: 1px solid #ddd;
@@ -116,7 +108,7 @@ button {
     display: none; /* Hide it by default */
     position: absolute; /* Position relative to the parent */
     transform: translate(75px, -100px); /* Adjust for spacing */
-    z-index: 1000; /* Ensure it's above other content */
+    z-index: 10; /* Ensure it's above other content */
     border-collapse: collapse; /* Prevents phantom borders */
     width: auto; /* Make table width adjust based on content */
 }
@@ -284,12 +276,16 @@ ul.border li:last-child {
 }
 
 .overlay {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.7);
+    position: fixed; /* Fix to viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Full screen */
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    opacity: 1;
+    z-index: 100;
+    overflow: auto;
 }
 
 /* These are the rules you are looking for. */
