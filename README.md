@@ -65,4 +65,42 @@ git clone https://github.com/Victorivus/my-3000-Pyrenees.git
 cd my-3000-Pyrenees
 ```
 
-You would then need to setup a server or fork the Github repository and setup a [Github Pages](https://docs.github.com/en/pages/quickstart) 
+### Run locally
+You can open the `index.html` file directly in your browser or use a local server for development:
+
+#### Using Python (for a simple local server):
+```bash
+python -m http.server
+```
+or 
+
+```bash
+python3 -m http.server
+```
+Then navigate to `http://localhost:8000` in your web browser.
+
+You can alternatively fork the Github repository and setup a [Github Pages](https://docs.github.com/en/pages/quickstart).
+
+## Usage
+
+1. Open the app via the [live demo](https://victorivus.github.io/my-3000-Pyrenees) or run it locally.
+2. Use the interactive map to explore the peaks of the Pyrenees.
+3. Log your ascents by selecting a peak.
+   
+## Contributing
+
+Contributions are welcome! If you would like to add features or fix bugs, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-branch`).
+3. Make your changes.
+4. Commit your changes (`git commit -m 'Add some feature'`).
+5. Push to the branch (`git push origin feature-branch`).
+6. Open a pull request.
+
+Please ensure your contributions align with the project's coding standards and design principles.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/Victorivus/my-3000-Pyrenees/blob/main/LICENSE) file for details.
+
